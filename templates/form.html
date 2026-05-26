@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>formulario</title>
+    <link rel="stylesheet" href="../static/form.css">
+</head>
+
+<body>
+    <div class="form-container">
+        <h1>Novo Poema</h1>
+        <form id="poema_form">
+            <label>Titulo</label>
+            <input type="text" id="titulo" required />
+            <label>Autor</label>
+            <input type="text" id="autor" required />
+            <label>Imagem</label>
+            <input type="file" id="imagem" accept="image/*" />
+            <label>Poema</label>
+            <textarea id="poema" required></textarea>
+            <label>O que estava pensando enquanto escrevia</label>
+            <textarea id="pensamento"></textarea>
+            <label>Ideia do poema</label>
+            <textarea id="ideia"></textarea>
+            <button type="submit">Enviar poema</button>
+            <button type="submit" id="painel">Analisar Poemas</button>
+        </form>
+
+    </div>
+
+    {% include 'painel_admin.html' %}
+    <script type="module" src="{{ url_for('static', filename='form.js') }}"></script>
+</body>
+
+</html>

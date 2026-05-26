@@ -1,0 +1,234 @@
+/* ================= MODAL ================= */
+
+.modal-overlay{
+    position: fixed;
+    inset: 0;
+
+    background: rgba(0,0,0,0.75);
+    backdrop-filter: blur(8px);
+
+    display: none;
+
+    align-items: center;
+    justify-content: center;
+
+    z-index: 999999;
+}
+
+.modal-overlay.active{
+    display: flex;
+}
+
+
+/* ================= BOX ================= */
+
+.modal-box{
+    position: relative;
+    z-index: 1000000;
+
+    animation: modalOpen 0.35s ease;
+}
+
+@keyframes modalOpen{
+
+    from{
+        opacity: 0;
+        transform: translateY(20px) scale(0.95);
+    }
+
+    to{
+        opacity: 1;
+        transform: translateY(0px) scale(1);
+    }
+
+}
+
+
+/* ================= CARD ================= */
+
+.login-card{
+
+    width: 380px;
+
+    padding: 40px;
+
+    border-radius: 28px;
+
+    background: rgba(20,20,25,0.95);
+
+    border: 1px solid rgba(255,255,255,0.08);
+
+    box-shadow:
+        0 10px 40px rgba(0,0,0,0.45),
+        inset 0 1px 0 rgba(255,255,255,0.04);
+
+    pointer-events: auto;
+}
+
+
+/* ================= HEADER ================= */
+
+.login-header{
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.login-header h2{
+    color: white;
+    font-size: 2rem;
+    font-weight: 600;
+
+    margin-bottom: 8px;
+}
+
+.login-header p{
+    color: rgba(255,255,255,0.6);
+    font-size: 0.95rem;
+}
+
+
+/* ================= INPUTS ================= */
+
+.form-signin{
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.form-control{
+
+    width: 100%;
+
+    padding: 15px 18px;
+
+    border: 1px solid rgba(255,255,255,0.08);
+
+    border-radius: 14px;
+
+    background: rgba(255,255,255,0.04);
+
+    color: white;
+
+    font-size: 1rem;
+
+    outline: none;
+
+    transition: 0.25s ease;
+
+    box-sizing: border-box;
+
+    pointer-events: auto;
+}
+
+.form-control::placeholder{
+    color: rgba(255,255,255,0.4);
+}
+
+.form-control:focus{
+
+    border-color: #9b87f5;
+
+    background: rgba(255,255,255,0.06);
+
+    box-shadow: 0 0 0 4px rgba(155,135,245,0.15);
+}
+
+
+/* ================= BUTTON ================= */
+
+.login-btn{
+
+    margin-top: 10px;
+
+    padding: 15px;
+
+    border: none;
+
+    border-radius: 14px;
+
+    background: linear-gradient(
+        135deg,
+        #8b5cf6,
+        #6d28d9
+    );
+
+    color: white;
+
+    font-size: 1rem;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: 0.25s ease;
+}
+
+.login-btn:hover{
+
+    transform: translateY(-2px);
+
+    box-shadow: 0 8px 20px rgba(139,92,246,0.35);
+}
+
+
+/* ================= FOOTER ================= */
+
+.login-footer{
+    margin-top: 22px;
+    text-align: center;
+}
+
+.login-footer a{
+    color: #b8a8ff;
+    text-decoration: none;
+    font-size: 0.95rem;
+}
+
+.login-footer a:hover{
+    text-decoration: underline;
+}
+
+
+/* ================= CLOSE ================= */
+
+.close-modal{
+
+    position: absolute;
+
+    top: -12px;
+    right: -12px;
+
+    width: 42px;
+    height: 42px;
+
+    border-radius: 50%;
+
+    border: none;
+
+    background: rgba(255,255,255,0.08);
+
+    color: white;
+
+    font-size: 1rem;
+
+    cursor: pointer;
+
+    backdrop-filter: blur(10px);
+
+    transition: 0.2s ease;
+
+    z-index: 1000001;
+}
+
+.close-modal:hover{
+
+    background: rgba(255,255,255,0.16);
+
+    transform: scale(1.05);
+}
+
+
+/* ================= IMPORTANT ================= */
+
+canvas{
+    pointer-events: none;
+}

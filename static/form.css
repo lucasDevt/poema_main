@@ -1,0 +1,238 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: #0b0d12;
+    font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+    color: #eef2ff;
+    line-height: 1.5;
+    overflow-x: hidden;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    position: relative;
+}
+
+/* fundo com gradiente sutil e brilho */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: radial-gradient(circle at 50% 20%, #1a1f2b 0%, #0b0d12 90%);
+    z-index: -2;
+}
+
+body::after {
+    content: "";
+    position: fixed;
+    width: 80vw;
+    height: 80vw;
+    background: radial-gradient(circle, rgba(167,139,250,0.12), transparent 70%);
+    top: -20vh;
+    left: 50%;
+    transform: translateX(-50%);
+    filter: blur(100px);
+    z-index: -1;
+}
+
+/* container do formulário */
+.form-container {
+    max-width: 780px;
+    width: 100%;
+    margin: 0 auto;
+    background: rgba(15, 18, 25, 0.75);
+    backdrop-filter: blur(16px);
+    border-radius: 2rem;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    box-shadow: 0 30px 50px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.03);
+    padding: 2rem 2rem 2.5rem;
+    transition: all 0.3s ease;
+}
+
+/* título poético */
+.form-container h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    background: linear-gradient(135deg, #ffffff, #c4b5fd);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-align: center;
+    margin-bottom: 1.8rem;
+    border-bottom: 1px solid rgba(167, 139, 250, 0.3);
+    display: inline-block;
+    width: auto;
+    padding-bottom: 0.5rem;
+}
+
+/* centralizar título e dar leveza */
+.form-container {
+    text-align: center;
+}
+
+form {
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    gap: 1.3rem;
+}
+
+/* labels */
+label {
+    font-size: 0.85rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #b9c3d4;
+    margin-bottom: -0.6rem;
+    display: block;
+}
+
+/* campos de texto, textarea e file */
+input, textarea {
+    width: 100%;
+    background: #0f1219;
+    border: 1px solid #252b36;
+    border-radius: 1rem;
+    padding: 0.9rem 1.2rem;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+    color: #eef2ff;
+    transition: all 0.25s ease;
+    outline: none;
+    resize: vertical;
+}
+
+textarea {
+    min-height: 110px;
+    resize: vertical;
+    line-height: 1.5;
+}
+
+/* campo de arquivo - personalização suave */
+input[type="file"] {
+    background: #0f1219;
+    padding: 0.7rem 1rem;
+    cursor: pointer;
+    color: #b9c3d4;
+    font-size: 0.85rem;
+}
+
+input[type="file"]::file-selector-button {
+    background: #1e2430;
+    border: none;
+    border-radius: 2rem;
+    padding: 0.4rem 1rem;
+    color: #eef2ff;
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    margin-right: 1rem;
+    transition: 0.2s;
+    cursor: pointer;
+}
+
+input[type="file"]::file-selector-button:hover {
+    background: #2a3241;
+    color: #c4b5fd;
+}
+
+/* focus glow */
+input:focus, textarea:focus {
+    border-color: #a78bfa;
+    box-shadow: 0 0 0 3px rgba(167, 139, 250, 0.2);
+    background: #11151f;
+}
+
+/* botão principal */
+button {
+    margin-top: 0.8rem;
+    background: linear-gradient(105deg, #1e2432 0%, #151a24 100%);
+    border: 1px solid rgba(167, 139, 250, 0.4);
+    border-radius: 2.5rem;
+    padding: 0.9rem 1.8rem;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 1rem;
+    color: #f0f2fa;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    letter-spacing: 0.01em;
+    backdrop-filter: blur(4px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+}
+
+button:hover {
+    background: linear-gradient(105deg, #2a3245, #1b212f);
+    border-color: #a78bfa;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4), 0 0 12px rgba(167, 139, 250, 0.3);
+    transform: translateY(-2px);
+    color: white;
+}
+
+button:active {
+    transform: translateY(1px);
+}
+
+/* espaçamento específico para os campos */
+#poema, #pensando, #ideia {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+/* efeito sutil de brilho nos campos ao passar mouse */
+input:hover, textarea:hover {
+    border-color: #3e465b;
+}
+
+/* responsivo */
+@media (max-width: 640px) {
+    body {
+        padding: 1rem;
+    }
+    .form-container {
+        padding: 1.5rem;
+    }
+    .form-container h1 {
+        font-size: 1.8rem;
+    }
+    button {
+        padding: 0.7rem 1.2rem;
+    }
+}
+
+/* detalhe: linha decorativa acima do botão */
+form {
+    position: relative;
+}
+
+form::after {
+    content: "";
+    display: block;
+    width: 80px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #a78bfa, transparent);
+    margin: 0.8rem auto 0;
+    opacity: 0.5;
+}
+
+/* ajuste para última label e espaçamento */
+label:last-of-type {
+    margin-bottom: -0.4rem;
+}

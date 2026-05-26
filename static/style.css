@@ -1,0 +1,550 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: #0b0d12;
+    font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+    color: #eef2ff;
+    line-height: 1.5;
+    overflow-x: hidden;
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+/* ================= TIPOGRAFIA ================= */
+h1, h2, h3, h4 {
+    font-weight: 500;
+    letter-spacing: -0.02em;
+}
+
+h2 {
+    font-size: 1.6rem;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* ================= HEADER ================= */
+.site-header {
+    background-color: rgba(11, 13, 18, 0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    padding: 0.9rem 0;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1.2rem;
+    flex-wrap: wrap;
+}
+
+.logo a {
+    font-size: 1.7rem;
+    font-weight: 600;
+    background: linear-gradient(135deg, #fff, #c4b5fd);
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+.nav-links {
+    display: flex;
+    gap: 2rem;
+    font-size: 0.95rem;
+}
+
+.nav-links a {
+    color: #b9c3d4;
+    transition: 0.2s;
+}
+
+.nav-links a:hover {
+    color: #c4b5fd;
+}
+
+.search-box {
+    display: flex;
+    align-items: center;
+    background: #171b23;
+    border-radius: 40px;
+    padding: 0.45rem 1rem;
+    border: 1px solid #252b36;
+}
+
+.search-box input {
+    background: transparent;
+    border: none;
+    color: #eef2ff;
+    outline: none;
+    font-size: 0.85rem;
+    width: 150px;
+}
+
+/* ================= HERO ================= */
+.hero {
+    height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: radial-gradient(circle at 50% 30%, #1a1f2b 0%, #0b0d12 70%);
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(167,139,250,0.15), transparent 70%);
+    top: -100px;
+    left: 50%;
+    transform: translateX(-50%);
+    filter: blur(80px);
+}
+
+.typing {
+    font-size: 3rem;
+    background: linear-gradient(135deg, #fff, #c4b5fd);
+    -webkit-background-clip: text;
+    color: transparent;
+    border-right: 2px solid #c4b5fd;
+    animation: blink 1s infinite;
+}
+
+.hero-subtitle {
+    margin-top: 1rem;
+    color: #9aa4b2;
+    font-style: italic;
+}
+
+@keyframes blink {
+    50% { border-color: transparent; }
+}
+
+/* ================= SEÇÃO ================= */
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    margin: 2.5rem 0 1.8rem;
+    border-bottom: 1px solid #1f242f;
+    padding-bottom: 0.7rem;
+}
+
+.section-header h2 {
+    border-left: 4px solid #a78bfa;
+    padding-left: 1rem;
+}
+
+.more-link {
+    color: #a78bfa;
+}
+
+/* ================= GRID ================= */
+.poems-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 2rem;
+}
+
+/* ================= CARD ================= */
+
+.card {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    background: #0f1219;
+    cursor: pointer;
+    transition: 0.4s;
+    box-shadow: 0 20px 40px -15px rgba(0,0,0,0.9);
+}
+
+/* glow */
+.card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 50% -20%, rgba(167,139,250,0.35), transparent 70%);
+    opacity: 0;
+    transition: 0.5s;
+    z-index: 1;
+}
+
+.card:hover::before {
+    opacity: 1;
+}
+
+/* imagem */
+.card-image {
+    width: 100%;
+    aspect-ratio: 2 / 2.8;
+}
+
+.card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: 0.6s;
+    filter: brightness(0.55);
+}
+
+/* overlay */
+.card-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.95), rgba(0,0,0,0.4), transparent);
+}
+
+/* conteúdo */
+.card-content {
+    position: absolute;
+    bottom: 0;
+    padding: 1.4rem;
+    z-index: 2;
+}
+
+.card-content h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.25rem;
+    color: #f1f3ff;
+    letter-spacing: 0.04em;
+}
+
+.card-content p {
+    font-size: 0.85rem;
+    color: #9aa4b2;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: 0.4s;
+}
+
+.card-stats {
+    position: absolute;
+    bottom: 10px;
+    right: 12px;
+    font-size: 0.7rem;
+    color: #8f98aa;
+    display: flex;
+    gap: 0.6rem;
+    z-index: 2;
+}
+
+/* hover */
+.card:hover {
+    transform: translateY(-12px) scale(1.04);
+}
+
+
+.card:hover img {
+    transform: scale(1.08);
+    filter: brightness(0.35);
+}
+
+.card:hover .card-content p {
+    opacity: 1;
+    transform: translateY(0);
+}
+.card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at center, rgba(167,139,250,0.15), transparent 70%);
+    opacity: 0;
+    transition: 0.4s;
+}
+
+.card:hover::after {
+    opacity: 1;
+}
+
+/* ================= CHUVA ================= */
+.poems-section {
+    position: relative;
+    overflow: hidden;
+}
+
+#rain-canvas {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    opacity: 0.4;
+}
+
+.poems-section .poems-grid,
+.poems-section .section-header {
+    position: relative;
+    z-index: 2;
+}
+
+/* ================= MODAL BASE ================= */
+.modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.85);
+    backdrop-filter: blur(10px);
+
+    display: none;
+    align-items: center;
+    justify-content: center;
+
+    z-index: 9999;
+
+    opacity: 0;
+    transform: scale(0.95);
+    transition: 0.35s ease;
+}
+
+.modal:target {
+    display: flex;
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* ================= CONTEÚDO ================= */
+.modal-content {
+    position: relative;
+
+    background: linear-gradient(145deg, rgba(15,18,25,0.95), rgba(20,24,35,0.85));
+    border-radius: 30px;
+    padding: 2.5rem;
+    width: 90%;
+    max-width: 850px;
+
+    max-height: 90vh;
+    overflow-y: auto;
+
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255,255,255,0.05);
+
+    box-shadow:
+        0 40px 80px rgba(0,0,0,0.9),
+        inset 0 0 40px rgba(167,139,250,0.05);
+}
+
+/* ================= BOTÃO FECHAR ================= */
+.close-modal {
+    position: absolute;
+    top: 20px;
+    right: 25px;
+    font-size: 1.6rem;
+    color: #aaa;
+    transition: 0.3s;
+}
+
+.close-modal:hover {
+    color: #fff;
+    transform: scale(1.2);
+}
+
+/* ================= HEADER ================= */
+.modal-poema-header {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.modal-capa img {
+    width: 160px;
+    border-radius: 16px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.7);
+}
+
+.modal-info h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    background: linear-gradient(135deg, #fff, #c4b5fd);
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+.modal-autor {
+    margin-top: 0.3rem;
+    color: #9aa4b2;
+    font-size: 0.9rem;
+    font-style: italic;
+}
+
+/* ================= TEXTO DO POEMA ================= */
+.poema-texto-modal {
+    margin-top: 1.5rem;
+    line-height: 1.9;
+    font-size: 1.05rem;
+    color: #e4e7f5;
+
+    font-family: 'Playfair Display', serif;
+    letter-spacing: 0.03em;
+
+    text-align: center;
+    white-space: pre-line;
+}
+
+/* ================= REFLEXÕES ================= */
+.reflexao-modal {
+    margin-top: 2rem;
+    display: grid;
+    gap: 1.2rem;
+}
+
+.reflexao-item-modal {
+    background: rgba(255,255,255,0.03);
+    border-left: 3px solid #a78bfa;
+    padding: 1rem 1.2rem;
+    border-radius: 12px;
+}
+
+.reflexao-item-modal h4 {
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+    color: #c4b5fd;
+}
+
+.reflexao-item-modal p {
+    font-size: 0.85rem;
+    color: #b9c3d4;
+}
+
+/* ================= FOOTER ================= */
+.site-footer {
+    text-align: center;
+    margin-top: 4rem;
+    padding: 2rem;
+    color: #7c8599;
+}
+
+/* From Uiverse.io by reshades */ 
+.button {
+  background-color: #ffffff00;
+  color: #fff;
+  width: 8.5em;
+  height: 2.9em;
+  border: #3654ff 0.2em solid;
+  border-radius: 11px;
+  text-align: right;
+  transition: all 0.6s ease;
+}
+
+.button:hover {
+  background-color: #3654ff;
+  cursor: pointer;
+  transform: scale(1.10);
+  transition: 700ms;
+}
+
+.button h3 {
+  width: 1.6em;
+  margin: -0.2em 0.8em 1em;
+  position: absolute;
+  display: flex;
+  transition: all 0.6s ease;
+}
+
+.button:hover h3 {
+  transform: translateX(5px);
+}
+
+.text {
+  margin: 0 1.5em
+}
+
+/* ================= SWEET ALERT ================= */
+
+.swal2-container{
+    z-index: 99999999 !important;
+}
+
+.swal2-popup{
+
+    background: #11151d !important;
+
+    border: 1px solid rgba(255,255,255,0.05) !important;
+
+    border-radius: 18px !important;
+
+    width: 320px !important;
+
+    padding: 1.4rem !important;
+
+    box-shadow:
+        0 20px 40px rgba(0,0,0,0.5) !important;
+}
+
+
+/* título */
+.swal2-title{
+
+    font-size: 1.2rem !important;
+
+    font-weight: 600 !important;
+
+    color: #eef2ff !important;
+
+    margin-top: 0.3rem !important;
+}
+
+
+/* texto */
+.swal2-html-container{
+
+    color: #9aa4b2 !important;
+
+    font-size: 0.9rem !important;
+
+    margin-top: 0.4rem !important;
+}
+
+
+/* botão */
+.swal2-confirm{
+
+    background: #8b5cf6 !important;
+
+    border: none !important;
+
+    border-radius: 10px !important;
+
+    padding: 10px 18px !important;
+
+    font-size: 0.85rem !important;
+
+    font-weight: 500 !important;
+
+    transition: 0.2s ease !important;
+}
+
+.swal2-confirm:hover{
+
+    background: #7c3aed !important;
+
+    transform: scale(1.03);
+}
+
+
+/* ícone */
+.swal2-icon{
+
+    transform: scale(0.8);
+
+    margin-top: 0.2rem !important;
+
+    margin-bottom: 0.2rem !important;
+}

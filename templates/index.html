@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Ecos da Alma | Poemas autorais</title>
+
+    <!-- Fonte elegante -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='login.css') }}">
+</head>
+
+<body>
+
+    <!-- ================= HEADER ================= -->
+    <header class="site-header">
+        <div class="container header-content">
+            <div class="logo">
+                <a href="#">✦ Ecos da Alma</a>
+            </div>
+
+            <nav class="nav-links">
+                <a href="#">Início</a>
+                <a href="#">Poemas</a>
+                <a href="#">Sobre</a>
+                <a href="#">Coleções</a>
+            </nav>
+
+            <div class="search-box">
+                <span class="search-icon">🔍</span>
+                <input type="text" placeholder="Buscar poema...">
+            </div>
+
+            <button class="button" id="sing-in">
+                <h3>➕</h3>
+                <div class="text">sing-in</div>
+            </button>
+        </div>
+    </header>
+
+    <!-- ================= HERO ================= -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="typing" id="typing-text"></h1>
+            <p class="hero-subtitle">
+                onde palavras não são escritas… são sentidas.
+            </p>
+        </div>
+    </section>
+
+    <!-- ================= MAIN ================= -->
+    <main>
+        <div class="container">
+
+            <div class="poems-section">
+
+                <!-- 🌧️ CANVAS DA CHUVA -->
+                <canvas id="rain-canvas"></canvas>
+
+                <!-- HEADER DA SEÇÃO -->
+                <div class="section-header">
+                    <h2>📜 Poemas em destaque esta semana</h2>
+                    <a href="#" class="more-link">MAIS +</a>
+                </div>
+
+                <!-- 👇 GRID VAZIO (JS VAI PREENCHER) -->
+                <div class="poems-grid" id="poems-grid"></div>
+
+            </div>
+
+        </div>
+    </main>
+
+    <!-- 👇 CONTAINER GLOBAL DOS MODAIS -->
+    <div id="modal-container"></div>
+
+
+    <!-- ================= FOOTER ================= -->
+    <footer class="site-footer">
+        <div class="container">
+            <p>✦ Ecos da Alma – Poesia visual | Inspirado em galerias de arte e cinema ✦</p>
+            <p style="margin-top: 0.5rem; font-size: 0.7rem;">© 2025 · Todos os poemas são autorais</p>
+        </div>
+    </footer>
+    <!-- modal -->
+    {% include 'login_modal.html' %}
+    <!-- SCRIPTS -->
+    <script src="https://unpkg.com/page-flip/dist/js/page-flip.browser.js"></script>
+    <script type="module" src="{{ url_for('static', filename='main.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</body>
+
+</html>
