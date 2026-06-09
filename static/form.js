@@ -4,7 +4,10 @@ import { initializeApp }
 import {
     getDatabase,
     ref,
-    push
+    push,
+    onValue,
+    remove,
+    update
 }
     from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
 
@@ -131,8 +134,41 @@ async function enviar_poema(image_final) {
 
 }
 
-const painelForm = document.getElementById("painel");
+// painel admin
 
-painelForm.addEventListener("submit", async (e) => {
-    e.preventDefault();
+const painelBtn = document.getElementById("painel")
+const adminModal = document.getElementById("admin-modal")
+const closeAdmin = document.getElementById("close-admin")
+
+//abrir painel
+painelBtn.addEventListener("click", (e)=>{
+    e.preventDefault()
+    adminModal.classList.add("active")
+    carregarPoemasAdmin()
+});
+
+// fechar painel
+closeAdmin.addEventListener("click", ()=>{
+    adminModal.classList.remove("active")
 })
+
+// carregar poemas
+function carregarPoemasAdmin(){
+    const poemasRef = ref(db,"poemas");
+    onValue(poemasRef, (snapshot)=>{
+        const data = snapshot.val();
+        const grid = document.getElementById("admin-poems-grid");
+        grid.innerHTML = "";
+        if(!data){
+            grid.innerHTML = "<p> Nenhum poema cadastrado <p>";
+            return
+        }
+        const poems = Object.entries(data).map(
+            ([key,poema])=>({
+                firebaseKey:key,
+                ...poema
+            })
+        )
+        renderPoemsAdmin(poems)
+    })
+}

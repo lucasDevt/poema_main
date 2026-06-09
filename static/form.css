@@ -236,3 +236,23 @@ form::after {
 label:last-of-type {
     margin-bottom: -0.4rem;
 }
+
+/* painel */
+
+#admin-modal{
+    display: none;
+}
+
+#admin-modal.active{
+    display: flex;
+}
+
+.modal-overlay{
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, .85);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
