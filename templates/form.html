@@ -25,13 +25,15 @@
             <label>Ideia do poema</label>
             <textarea id="ideia"></textarea>
             <button type="submit">Enviar poema</button>
-            <button type="submit" id="painel">Analisar Poemas</button>
+            <button type="button" id="painel">Analisar Poemas</button>
         </form>
 
     </div>
 
     {% include 'painel_admin.html' %}
     <script type="module" src="{{ url_for('static', filename='form.js') }}"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='form.css') }}">
 </body>
 
 </html>
