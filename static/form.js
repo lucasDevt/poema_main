@@ -172,3 +172,28 @@ function carregarPoemasAdmin(){
         renderPoemsAdmin(poems)
     })
 }
+
+// renderizar poemas
+function renderPoemsAdmin(poems){
+    const grid = document.getElementById("admin-poems-grid")
+    grid.innerHTML = ""
+    poems.reverse().forEach(poema =>{
+        const card = document.createElement("div")
+        card.className = "card"
+        card.innerHTML = `
+            <div class = "card-image">
+            <img src = "${poema.imagem}"/>
+            </div>
+            <div class = "card-overlay"></div>
+            <div class = "card-content">
+            <h3>${poema.titulo}</h3>
+            <p>${poema.poema.slice(0,50)}...</p>
+            <div style = "margin-top:15px; display: flex;">
+            <button class = "editar-btn" data-id = "${poema.firebaseKey}">Editar 🖊</button>
+            <button class = "deletar-btn" data-id = "${poema.firebaseKey}">Deletar 🗑</button>
+            </div>
+            </div>
+        `;
+        grid.appendChild(card)
+    })
+}
