@@ -197,3 +197,42 @@ function renderPoemsAdmin(poems){
         grid.appendChild(card)
     })
 }
+
+// excluir
+document.addEventListener("click", async (e)=>{
+    if(e.target.classList.contains("deletar-btn")){
+        const id = e.target.dataset.id;
+        const confirmar = confirm("Deseja mesmno excluir este poema?")
+        if (!confirmar) return;
+        try {
+            await remove(ref(db,`poemas/${id}`))
+            alert("poema excluido")
+        } catch (error) {
+            console.error(error);
+            alert("erro ao excluir")
+        }
+    }
+})
+
+//editar
+let poema_editado = null
+
+document.addEventListener("click", (e)=>{
+   const btn = e.target.closest(".editar-btn")
+   if (!btn) return;
+   poema_editado = btn.dataset.id;
+   const poemaRef = ref(db,`poemas/${poema_editado}`);
+   onValue(poemaRef,(snapshot)=>{
+    const poema = snapshot.val();
+    if (!poema) return;
+    document.getElementById("edit-id").value = poema_editado;
+    document.getElementById("edit-titulo").value = poema.titulo || "";
+    document.getElementById("edit-autor").value = poema.autor || "";
+    document.getElementById("edit-poema").value = poema.poema || "";
+    document.getElementById("edit-pensamento").value = poema.pensamento || "";
+    document.getElementById("edit-ideia").value = poema.ideia || "";
+    document.getElementById("edit-preview").value = poema.imagem || "";
+    document.getElementById("editar-modal").classList.add("active")
+   },{onlyOnce:true})
+})
+
