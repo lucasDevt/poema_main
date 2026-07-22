@@ -13,3 +13,32 @@
     </div>
 
 </div>
+
+<div class="modal-overlay" id="editar-modal">
+    <div class="modal-box admin-modal-box">
+        <button class="close-modal" id="close-editar">X</button>
+        <h2>🖊 Editar poema</h2>
+
+        <form id="editar-form">
+            <input type="hidden" id="edit-id">
+            <label>Titulo</label>
+            <input type="text" id="edit-titulo" required>
+            <label>Autor</label>
+            <input type="text" id="edit-autor" required>
+            <label>Poema</label>
+            <input type="text" id="edit-poema" required>
+            <label>Pensamento</label>
+            <input type="text" id="edit-pensamento" required>
+            <label>Ideia</label>
+            <input type="text" id="edit-ideia" required>
+            <label>Imagem Atual: </label>
+            <div class="preview-imagem">
+                <img src="" alt="imagem do poema" id="edit-preview">
+            </div>
+            <label>Nova imagem</label>
+            <input type="file" id="edit-imagem" accept="imagem/*">
+            <button class="salvar-btn" type="submit">Salvar alterações</button>
+        </form>
+    </div>
+</div>
+
